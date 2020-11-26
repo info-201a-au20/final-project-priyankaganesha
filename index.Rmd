@@ -1,0 +1,25 @@
+---
+title: "Rmarkdown"
+author: "jonathan barrow"
+date: "11/26/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction to the dataset
+## Indicators of Anxiety or Depression Based on Reported Frequency of Symptoms During Last 7 Days, April 2020 to October 2020.  
+###  This data was collected from a national household pulse survey by the U.S. Census Bureau meant to produce data on the social and economic impacts of Covid-19 on households in the US. This portion of the survey is on the indicators of anxiety or depression changing over time, during the pandemic, on different ages, races, education levels and states. This dataset can answer questions regarding how mental health circumstances have changed during the pandemic. Specifically, Are there higher instances of mental health conditions during the coronavirus pandemic?
+
+
+# Summary Paragraph
+## --Insert information about summary table here--
+
+
+# --Insert Rendering of table here--
+
+# --Insert Descriptions of each chart her--
+
+
