@@ -25,7 +25,7 @@ chart_two <- function(df_choice) {
     ) +
     coord_flip() +
     labs(
-      title = "Comparing the Percent of People Depressed or Anxious per State at the Beginning of Phase One and Two",
+      title = "Percent of People Depressed or Anxious per State",
       y = "Percent of People Reporting Symptoms of Anxiety or Depression",
       x = "State"
     ) +

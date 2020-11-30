@@ -1,25 +1,47 @@
 ---
-title: "Rmarkdown"
-author: "jonathan barrow"
-date: "11/26/2020"
+title: "Analyzing Indicators of Anxiety or Depression in the US During the Global COVID-19 Pandemic"
+author: "Jonathan Barrow, Megan Taylor, Priyanka Ganesha and Carie Tan"
+date: "11/30/2020"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
+df_project <- read.csv("data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
+
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Introduction to the dataset
-## Indicators of Anxiety or Depression Based on Reported Frequency of Symptoms During Last 7 Days, April 2020 to October 2020.  
-###  This data was collected from a national household pulse survey by the U.S. Census Bureau meant to produce data on the social and economic impacts of Covid-19 on households in the US. This portion of the survey is on the indicators of anxiety or depression changing over time, during the pandemic, on different ages, races, education levels and states. This dataset can answer questions regarding how mental health circumstances have changed during the pandemic. Specifically, Are there higher instances of mental health conditions during the coronavirus pandemic?
+## Our Chosen Dataset
+### Indicators of Anxiety or Depression Based on Reported Frequency of Symptoms During Last 7 Days, April 2020 to October 2020  
+This data was collected from a national household pulse survey by the U.S. Census Bureau meant to produce data on the social and economic impacts of Covid-19 on households in the US. This portion of the survey is on the indicators of anxiety or depression changing over time, during the pandemic, on different ages, races, education levels and states. This dataset can answer questions regarding how mental health circumstances have changed during the pandemic. For example, are there higher instances of mental health conditions during the coronavirus pandemic?
+
+Dataset source: <https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-Based-on-Repor/8pt5-q6wp>
+
+## Summary Paragraph
+
+## Summary Table
+
+## Charts
+### Chart One:
+
+### Chart Two: Comparing the Percent of People Depressed or Anxious per State at the Beginning of Phase One and Two of the Survey
+This plot was created to answer how the percent of people feeling depressed or anxious differs depending on the state, and how it changed for those states between the beginning of Phase One and Phase Two of the survey. The beginning of Phase One was Apr 23 - May 5 2020 and the beginning of Phase Two was Aug 19 - Aug 31 2020.
+
+From this plot it can be observed that while many states had higher percentages of symptoms of anxiety or depression in period two it was a mixed bag with some states reporting lower levels. This could suggest that pandemic conditions in different states affect their levels of anxiety or depression individually rather than the overall condition of the United States. It can also be observed that the state with the highest value in the beginning of Phase One was New York with 41.4% and the highest value in the beginning of Phase Two switched to Nevada with 40.4% symptomatic of anxiety or depression. 
+```{R, echo = FALSE, message = FALSE, warning = FALSE}
+source("scripts/second_chart.R")
+chart_two(df_project)
+```
+
+### Chart Three: Comparing the Percent of People in the US Symptomatic of Anxiety and/or Depression Over Time
+This plot was created to answer how the percent of people feeling depressed and/or anxious differs over time. The time period of this chart goes from the beginning to the end of the survey, from Apr 23 - May 5 to Oct 14 - Oct 26 of 2020. There are three groups observed in this chart: people suffering from anxiety, people suffering from depression and people suffering from either.
+
+From this plot it can be observed that there were a greater number of people overall suffering from anxiety than depression as individual problems over the course of the whole survey. The highest symptom percentages for all groups was in the time period from July 16 - July 21 2020. The trend for all groups follow a similar trajectory, suggesting that anxiety and depression could be triggered by similar events in the same time periods.       
+```{R, echo = FALSE, message = FALSE, warning = FALSE}
+source("scripts/third_chart.R")
+chart_three(df_project)
+```
 
 
-# Summary Paragraph
-## --Insert information about summary table here--
-
-
-# --Insert Rendering of table here--
-
-# --Insert Descriptions of each chart her--
 
 
