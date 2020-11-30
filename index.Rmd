@@ -8,6 +8,10 @@ output: html_document
 ```{r setup, include=FALSE}
 df_project <- read.csv("data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
 
+library("dplyr")
+library("ggplot2")
+library("plotly")
+
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
