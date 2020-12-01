@@ -18,6 +18,7 @@ chart_one <- function(df_choice){
     xlab("Percent of people admitting to a particular state") + 
     ylab("Time period of the study")
   
+  ggplotly(phase_plot)
   return(phase_plot)
 }
 
