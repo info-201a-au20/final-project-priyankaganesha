@@ -6,10 +6,14 @@ chart_three <- function(df_choice) {
   library("ggplot2")
   library("plotly")
 
+#Here the function is filtered to just rows relating to only the US as a whole,
+#and removing rows with nonsense
   df_sort <- filter(df_choice,
                     Group == "National Estimate",
                     ï..Phase != -1)
 
+#Here the plot is being created to compare the percent of people suffering
+#from anxiety or depression over time for the US as a whole.
   plot_three <- ggplot(data = df_sort,
                        aes(x = Time.Period.Label,
                            y = Value,
