@@ -61,8 +61,8 @@ This plot was created to answer how the percent of people feeling depressed and/
 
 From this plot it can be observed that there were a greater number of people overall suffering from anxiety than depression as individual problems over the course of the whole survey. The highest symptom percentages for all groups was in the time period from July 16 - July 21 2020. The trend for all groups follow a similar trajectory, suggesting that anxiety and depression could be triggered by similar events in the same time periods.       
 ```{R, echo = FALSE, message = FALSE, warning = FALSE}
-#source("scripts/third_chart.R")
-#chart_three(df_project)
+source("scripts/third_chart.R")
+chart_three(df_project)
 ```
 
 
