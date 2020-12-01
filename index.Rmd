@@ -26,7 +26,16 @@ Dataset source: <https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-B
 ## Summary Table
 
 ## Charts
-### Chart One:
+### Chart One: Determing if seasonal interference had occured within the dataset.
+This plot was created to see if there was any correlation between the time periods people were reporting their mental state and their average value. This was to show that the people in the study 
+had a lower chance of being affected by seasonal, weather, and other factors that could affect the 
+mean value. The chart clarifies and shows that there is no apparent correlation between the time 
+periods of the study, which range from April to October, and the average values of people repoting various states. 
+
+```{R, echo = FALSE, message = FALSE, warning = FALSE}
+source("scripts/first_chart.R")
+chart_one(df_project)
+```
 
 ### Chart Two: Comparing the Percent of People Depressed or Anxious per State at the Beginning of Phase One and Two of the Survey
 This plot was created to answer how the percent of people feeling depressed or anxious differs depending on the state, and how it changed for those states between the beginning of Phase One and Phase Two of the survey. The beginning of Phase One was Apr 23 - May 5 2020 and the beginning of Phase Two was Aug 19 - Aug 31 2020.
