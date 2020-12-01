@@ -27,10 +27,10 @@ Dataset source: <https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-B
 
 ## Charts
 ### Chart One: Determing if seasonal interference had occured within the dataset.
-This plot was created to see if there was any correlation between the time periods people were reporting their mental state and their average value. This was to show that the people in the study 
+This plot was created to see if there was any correlation between the time periods people were reporting their mental state and percent of positives. This was to show that the people in the study
 had a lower chance of being affected by seasonal, weather, and other factors that could affect the 
 mean value. The chart clarifies and shows that there is no apparent correlation between the time 
-periods of the study, which range from April to October, and the average values of people repoting various states. 
+periods of the study, which range from April to October, and the percent of people repoting various states. 
 
 ```{R, echo = FALSE, message = FALSE, warning = FALSE}
 source("scripts/first_chart.R")
