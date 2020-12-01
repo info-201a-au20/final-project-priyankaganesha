@@ -8,9 +8,11 @@ output: html_document
 ```{r setup, include=FALSE}
 df_project <- read.csv("data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
 
-library("dplyr")
-library("ggplot2")
-library("plotly")
+library(dplyr)
+library(ggplot2)
+library(plotly)
+source("scripts/summary_info.R")
+l <- compute_summary(df_project)
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -21,9 +23,17 @@ This data was collected from a national household pulse survey by the U.S. Censu
 
 Dataset source: <https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-Based-on-Repor/8pt5-q6wp>
 
+
 ## Summary Paragraph
+Since the pandemic hit the world, it has drastically turned the lives of humans all of the world upside down. One of many concerns that the COVID-19 pandemic as highlighted is that of mental health. Being under lockdown and limiting social interactions has led way for increased cases of anxiety and depression in people. From this data, have gathered some basic highlights of this crisis. In the United States, `r l$most_affected_state` was the state where on average, the highest percentage of test subjects experienced anxiety or depression symptoms. This is not aligned with what we would expect, as Louisiana is considered a place full of culture and happenings. It was also found that about `r l$bachelors_degree_affected`% of subjects who had a bachelor's degree or higher were affected. Although there are individuals of many genders in the United States, this dataset's subjects identified as either male or female. From this, it was found that the subjects who were `r l$male_v_female`, on average, were more likely to display symptoms of anxiety or depression. Additionally, females represented `r l$percent_of_whole_female` of the individuals who were affected. The age group that was most affected by this were individuals `r l$age_most_affected`. Conversely, the age group that was least affected were individuals `r l$age_least_affected`.
 
 ## Summary Table
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+source("scripts/summary_table.R")
+kable(make_summary_table(df_project))
+```
+
+This table shows some often-overlooked pieces of information about the confidence levels pertaining to the different data points. From the table, we can tell that the symptoms of depressive disorder had the least confidence level. Therefore, we can infer that it was probably more difficult to assess or diagnose individuals with this disorder or displaying these symptoms. This is essential to understanding the bigger picture of the data and assess how much of it we can rely on in making strong and big conclusions.
 
 ## Charts
 ### Chart One:
@@ -33,8 +43,8 @@ This plot was created to answer how the percent of people feeling depressed or a
 
 From this plot it can be observed that while many states had higher percentages of symptoms of anxiety or depression in period two it was a mixed bag with some states reporting lower levels. This could suggest that pandemic conditions in different states affect their levels of anxiety or depression individually rather than the overall condition of the United States. It can also be observed that the state with the highest value in the beginning of Phase One was New York with 41.4% and the highest value in the beginning of Phase Two switched to Nevada with 40.4% symptomatic of anxiety or depression. 
 ```{R, echo = FALSE, message = FALSE, warning = FALSE}
-source("scripts/second_chart.R")
-chart_two(df_project)
+#source("scripts/second_chart.R")
+#chart_two(df_project)
 ```
 
 ### Chart Three: Comparing the Percent of People in the US Symptomatic of Anxiety and/or Depression Over Time
@@ -42,8 +52,8 @@ This plot was created to answer how the percent of people feeling depressed and/
 
 From this plot it can be observed that there were a greater number of people overall suffering from anxiety than depression as individual problems over the course of the whole survey. The highest symptom percentages for all groups was in the time period from July 16 - July 21 2020. The trend for all groups follow a similar trajectory, suggesting that anxiety and depression could be triggered by similar events in the same time periods.       
 ```{R, echo = FALSE, message = FALSE, warning = FALSE}
-source("scripts/third_chart.R")
-chart_three(df_project)
+#source("scripts/third_chart.R")
+#chart_three(df_project)
 ```
 
 
