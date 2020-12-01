@@ -52,8 +52,8 @@ This plot was created to answer how the percent of people feeling depressed or a
 
 From this plot it can be observed that while many states had higher percentages of symptoms of anxiety or depression in period two it was a mixed bag with some states reporting lower levels. This could suggest that pandemic conditions in different states affect their levels of anxiety or depression individually rather than the overall condition of the United States. It can also be observed that the state with the highest value in the beginning of Phase One was New York with 41.4% and the highest value in the beginning of Phase Two switched to Nevada with 40.4% symptomatic of anxiety or depression. 
 ```{R, echo = FALSE, message = FALSE, warning = FALSE}
-#source("scripts/second_chart.R")
-#chart_two(df_project)
+source("scripts/second_chart.R")
+chart_two(df_project)
 ```
 
 ### Chart Three: Comparing the Percent of People in the US Symptomatic of Anxiety and/or Depression Over Time
