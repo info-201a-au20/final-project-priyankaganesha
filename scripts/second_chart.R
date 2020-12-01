@@ -6,6 +6,8 @@ chart_two <- function(df_choice) {
   library("ggplot2")
   library("plotly")
 
+#Here the function is filtered to just rows relating to states,
+#symptoms of anxiety or depression, and certain phases of the study
   df_sort <- filter(
     df_choice, Group == "By State",
     Indicator == "Symptoms of Anxiety Disorder or Depressive Disorder",
@@ -16,7 +18,8 @@ chart_two <- function(df_choice) {
     )) %>%
     arrange(State)
 
-
+#Here the plot is created comparing states and the percentages of anxiety or
+#depression for the two phases
   phase_plot <- ggplot(data = df_sort) +
     geom_col(
       mapping = aes(x = State, y = Value, fill = Phase),
@@ -32,7 +35,7 @@ chart_two <- function(df_choice) {
     scale_fill_brewer(palette = "Paired") +
     theme_classic()
 
-
+#Here I make the plot interactive with ggplotly
   plot_interact <- ggplotly(phase_plot)
 
   return(plot_interact)
