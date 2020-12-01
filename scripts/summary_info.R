@@ -1,7 +1,5 @@
 # This is the summary information for our midpoint project
 # Priyanka Ganesha
-library(lintr)
-lint("scripts/summary_info.R")
 compute_summary <- function(df) {
   library("dplyr")
 

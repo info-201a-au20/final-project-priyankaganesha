@@ -1,8 +1,5 @@
 # This is the summary table for our midpoint project
 # Priyanka Ganesha
-rm(list = ls())
-df <- read.csv("data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_
-               Frequency_of_Symptoms_During_Last_7_Days.csv")
 
 make_summary_table <- function(df) {
   confidence_low <- df %>%
