@@ -13,7 +13,10 @@ chart_one <- function(df_choice){
   
   phase_plot <- ggplot(data = df_sort) +
     geom_point(mapping = aes(x = Value, y = Time.Period)
-    )
+    ) +
+    ggtitle("Positive/Negative Correlation of Time-Period") + 
+    xlab("Percent of people admitting to a particular state") + 
+    ylab("Time period of the study")
   
   return(phase_plot)
 }
