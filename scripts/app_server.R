@@ -3,12 +3,14 @@ library(shiny)
 library(ggplot2)
 library(plotly)
 library(dplyr)
+library("rsconnect")
+library("pegas")
 
 
 
 server <- function(input, output){
   #loading data
-  df_depress <- read.csv("C:/Users/Megan/Documents/Junior Year UW/info201/final-project-priyankaganesha/data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
+  df_depress <- read.csv("C:\\Users\\admin\\Documents\\Informatics\\final-project-priyankaganesha\\data\\Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
   
   #Page One Plots
   

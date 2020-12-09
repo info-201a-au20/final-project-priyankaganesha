@@ -2,6 +2,7 @@
 library("shiny")
 library("ggplot2")
 library("plotly")
+library("pegas")
 
 project_overview <- tabPanel(
   "Overview of our Project",
@@ -31,11 +32,16 @@ page_one_widget <- sidebarPanel(
 )
 
 page_one_main <- mainPanel(
-  
 )
 
 page_one <- tabPanel(
-  "Enter Question one here:",
+  "Phases of the study by reported cases",
+  
+  titlePanel("Which phases of the study were above the 
+    average reported percent of cases?"),
+  
+  p("The two plots below are horizontal bar, and "),
+  
   sidebarLayout(
     page_one_main,
     page_one_widget
@@ -116,7 +122,7 @@ summary_page <- tabPanel(
 
 #First Takeaway
 #Second Takeaway
-f4("Second Takeaway: Mental Health Relations With COVID-19 Cases"),
+h4("Second Takeaway: Mental Health Relations With COVID-19 Cases"),
 p(""),
 #Third Takeaway
   
