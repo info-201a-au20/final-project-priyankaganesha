@@ -4,15 +4,77 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 library("rsconnect")
-library("pegas")
+
 
 
 
 server <- function(input, output){
   #loading data
-  df_depress <- read.csv("C:\\Users\\admin\\Documents\\Informatics\\final-project-priyankaganesha\\data\\Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
+  df_depress <- read.csv("/Users/stlp/Github/Informatics201/group-project/final-project-priyankaganesha/data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv")
   
   #Page One Plots
+  # First plot: Normalized average cases by reported time period
+  
+  output$normalized_plot <- renderPlotly({
+    # Here the data frame is filtered to just include 4 columns and remove na values.
+    new_df <- df_depress %>%
+    select("Time.Period.Label", "Value", "Subgroup", "Time.Period")
+  df_3 <- na.omit(new_df <- aggregate(new_df$Value, by = list(Time.Period.Label=new_df$Time.Period.Label), FUN=mean))
+  
+  # Here the column for the z_scores of the mean percentage values for each time
+  #period are created and ordered. 
+  
+  df_4 <- df_3 %>%
+    mutate(z_score = round((x - mean(x))/ sd(x), 2)) %>%
+    mutate(type = ifelse(z_score < 0, "below", "above"))
+  df_4 <- df_4[order(df_4$z_score),]
+  df_4$Time.Period.Label <- factor(df_4$Time.Period.Label, 
+                                   levels = df_4$Time.Period.Label)
+  # This is the code for the graph.
+  normalized_plot <- ggplot(df_4, aes(x=Time.Period.Label, y=z_score, 
+                   label = "z score of all time periods")) + 
+    geom_bar(stat = 'identity', aes(fill=type), width=.5) +
+    scale_fill_manual(name="Mean of reported cases in each time period", 
+                      labels=c("Above Average", "Below Average"),
+                      values = c("above"="#00ba38", "below"="#f8766d")) +
+    labs(subtitle = "Normalized average reported cases by time period",
+         title = "Reported Cases") +
+    coord_flip() 
+  normalized_plot <- ggplotly(normalized_plot)
+  return(normalized_plot)
+  
+  })
+  
+  #Second Plot: Percent reported by time period and case type
+  output$case_type_plot <- renderPlotly({
+    df_sort1 <- filter(
+      df_depress, Group == "National Estimate"
+    ) %>%
+      arrange(Indicator)
+    
+    #Here the plot is created comparing states and the percentages of anxiety or
+    #depression for the two phases
+    phase_plot <- ggplot(data = df_sort) +
+      geom_col(
+        mapping = aes(x = Time.Period.Label, y = Value, 
+                      fill = 	input$symptom_select),
+        position = position_dodge(),
+        width = .5
+      ) +
+      coord_flip() +
+      labs(
+        title = "Percent of People Depressed or Anxious per State",
+        y = "Percent of People Reporting Symptoms of Anxiety or Depression",
+        x = "Time Period"
+      ) +
+      scale_fill_brewer(palette = "Paired") +
+      theme_classic()
+    
+    #Here I make the plot interactive with ggplotly
+    plot_interact <- ggplotly(phase_plot)
+    
+    return(plot_interact)
+  })
   
   
   #Page Two Plots
@@ -21,7 +83,7 @@ server <- function(input, output){
     # sort the symptom
     df_nation <- filter(df_depress, Indicator == input$symp_select,
                         Group == "National Estimate",
-                        ï..Phase != -1)
+                        ?..Phase != -1)
     
     # Symptom names and title
     symp_names <- c(
@@ -56,7 +118,7 @@ server <- function(input, output){
     #added data
     df_case <- filter(df_depress, Indicator == input$symp_select,
                         Group == "National Estimate",
-                        ï..Phase != -1) %>%
+                        ?..Phase != -1) %>%
       mutate(cases = c(37163, 31099, 26995, 20448, 21361, 20548, 21860, 27957, 
                      40632, 52823, 59273, 72315, 46796, 40178, 42163, 45515, 
                      60238))

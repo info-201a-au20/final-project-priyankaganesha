@@ -2,7 +2,6 @@
 library("shiny")
 library("ggplot2")
 library("plotly")
-library("pegas")
 
 project_overview <- tabPanel(
   "Overview of our Project",
@@ -28,10 +27,20 @@ project_overview <- tabPanel(
 )
 
 page_one_widget <- sidebarPanel(
-  
+  radioButtons(
+    inputId = "symptom_select",
+    label = ("Symptom Selection:"),
+    choices = c("Anxiety" = "Symptoms of Anxiety Disorder",
+                "Depression" = "Symptoms of Depressive Disorder",
+                "Anxiety or Depression" = "Symptoms of Anxiety Disorder or Depressive Disorder"
+    ),
+    selected = "Symptoms of Anxiety Disorder"
+  )  
 )
 
 page_one_main <- mainPanel(
+  plotlyOutput("normalized_plot"),
+  plotlyOutput("case_type_plot")
 )
 
 page_one <- tabPanel(
