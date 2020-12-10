@@ -141,6 +141,18 @@ summary_page <- tabPanel(
   "Summary of our Project",
 
 #First Takeaway
+
+h4("First Takeaway: Dates of most reported mental health cases"),
+p("According to the first graph on page one,  we can see that most cases occured
+  evenly throughout all time periods with no one period standing out as a 
+  significant outlier. This is mirrored in the second graph on page one 
+  where we find both earlier time periods, May and April falling below the 
+  average z score of percent reported, as well as July and June months falling
+  above the average. Since the time period of the study went until October
+  there is not one time period that stands as being above or below the mean.
+  This could point towards people feeling anxious and/or depressed despite of 
+  the time of year of the survey, but rather due to lockdowns/restrictions 
+  that have occured throughout all the time-periods of the covid pandemic."),
 #Second Takeaway
 h4("Second Takeaway: Mental Health Relations With COVID-19 Cases"),
 p(""),
