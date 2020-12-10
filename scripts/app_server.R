@@ -83,7 +83,7 @@ server <- function(input, output){
     # sort the symptom
     df_nation <- filter(df_depress, Indicator == input$symp_select,
                         Group == "National Estimate",
-                        ?..Phase != -1)
+                        ï..Phase != -1)
     
     # Symptom names and title
     symp_names <- c(
