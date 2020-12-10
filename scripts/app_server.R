@@ -10,8 +10,8 @@ library("rsconnect")
 
 server <- function(input, output){
   #loading data
-  df_depress <- read.csv("C:/Users/Megan/Documents/Junior Year UW/info201/final-project-priyankaganesha/data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
-  
+  #df_depress1 <- read.csv("C:/Users/Megan/Documents/Junior Year UW/info201/final-project-priyankaganesha/data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
+  df_depress <- read.csv("/Users/stlp/Github/Informatics201/group-project/final-project-priyankaganesha/data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
   #Page One Plots
   # First plot: Normalized average cases by reported time period
   
@@ -34,11 +34,11 @@ server <- function(input, output){
   normalized_plot <- ggplot(df_4, aes(x=Time.Period.Label, y=z_score, 
                    label = "z score of all time periods")) + 
     geom_bar(stat = 'identity', aes(fill=type), width=.5) +
-    scale_fill_manual(name="Mean of reported cases in each time period", 
+    scale_fill_manual(name="Mean Cases", 
                       labels=c("Above Average", "Below Average"),
                       values = c("above"="#00ba38", "below"="#f8766d")) +
-    labs(subtitle = "Normalized average reported cases by time period",
-         title = "Reported Cases") +
+    ggtitle("Reported Cases by Week") +
+    xlab("Time period in weeks") + ylab("Z score of average values") +
     coord_flip() 
   normalized_plot <- ggplotly(normalized_plot)
   return(normalized_plot)
@@ -62,13 +62,9 @@ server <- function(input, output){
         width = .5, show.legend = FALSE
       ) + theme(legend.position = "none") +
       coord_flip() +
-      labs(
-        title = "Percent of People Depressed or Anxious per Time Period",
-        y = "Percent of People Reporting Symptoms of Anxiety or Depression",
-        x = "Time Period"
-      ) +
       scale_fill_brewer(palette = "Paired") +
-      theme_classic()
+      theme_classic() + ggtitle("Percent of People Depressed or Anxious per Time Period") +
+      ylab("Percent of case reported ") + xlab("Time Period")
     
     #Here I make the plot interactive with ggplotly
     plot_interact <- ggplotly(phase_plot)
@@ -83,7 +79,7 @@ server <- function(input, output){
     # sort the symptom
     df_nation <- filter(df_depress, Indicator == input$symp_select,
                         Group == "National Estimate",
-                        ï..Phase != -1)
+                        ?..Phase != -1)
     
     # Symptom names and title
     symp_names <- c(
@@ -118,7 +114,7 @@ server <- function(input, output){
     #added data
     df_case <- filter(df_depress, Indicator == input$symp_select,
                         Group == "National Estimate",
-                        ï..Phase != -1) %>%
+                        ?..Phase != -1) %>%
       mutate(cases = c(37163, 31099, 26995, 20448, 21361, 20548, 21860, 27957, 
                      40632, 52823, 59273, 72315, 46796, 40178, 42163, 45515, 
                      60238))
