@@ -137,6 +137,86 @@ server <- function(input, output){
     return(case_plot)
   })
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   #Page Three Plots
+  #First plot: National Percentages of Anxiety or Depression Symptoms Over Time
+  output$race_plot <- renderPlotly({
+    # sort the symptom
+    df_race <- df_depress %>% filter(Subgroup == input$race_select,
+                        Phase != -1) %>%
+      rename(dates = Time.Period.Label) %>%
+      group_by(dates) %>%
+      summarise(
+        Value = mean(Value)
+      )
+    
+    # Symptom names and title
+    race_names <- c(
+      "White" = "Non-Hispanic white, single race",
+      "Black" = "Non-Hispanic black, single race",
+      "Asian" = "Non-Hispanic Asian, single race",
+      "Other/Mixed Races" = "Non-Hispanic, other races and multiple races",
+      "Hispanic or Latino" = "Hispanic or Latino"
+    )
+    race_title <- paste0(
+      "Percentage of people identifying as ",
+      names(race_names[which(race_names == input$race_select)]),
+      " reporting symptoms in the US over time"
+    )
+    
+    # return the plot
+    race_plot <- ggplot(data = df_race, aes(x = dates, 
+                                                  y = Value, group = 1)) +
+      geom_point() + stat_smooth()+
+      
+      labs(title = race_title,
+           y = "Percentage Reporting Symptoms",
+           x = "Time"
+      ) +
+      theme_classic() +
+      theme(axis.text.x = element_text(angle = -90, hjust = 0, vjust = 0))
+    
+    race_plot <- ggplotly(race_plot)
+    return(race_plot)
+  })
+  
+  
+  # Second Plot: Trends of New Daily Covid Cases over time
+  output$gender_plot <- renderPlotly({
+    #added data
+    df_gender <- df_depress %>% filter(Group == "By Gender",
+                                       Phase != -1) %>%
+      rename(dates = Time.Period.Label) %>%
+      group_by(dates, Subgroup) %>%
+      summarise(
+        Value = mean(Value)
+      )
+    
+    # return the plot
+    gender_plot <- ggplot(data = df_gender, aes(x = dates, y = Value, 
+                                            group = 1, color = Subgroup)) +
+      geom_point()+
+      geom_line()+
+      labs(title = "Gender vs. Symptoms of Anxiety and/or Depression",
+           y = "Percentage Reporting Symptoms",
+           x = "Time"
+           
+      ) +
+      
+      theme_classic() +
+      theme(axis.text.x = element_text(angle = -90, hjust = 0, vjust = 0))
+    gender_plot <- ggplotly(gender_plot)
+    return(gender_plot)
+  })
   
 }

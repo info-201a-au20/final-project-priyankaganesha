@@ -122,15 +122,48 @@ page_two <- tabPanel(
 
 
 page_three_widget <- sidebarPanel(
-  
+  radioButtons(
+    inputId = "race_select",
+    label = ("Race Selection:"),
+    choices = c("White" = "Non-Hispanic white, single race",
+                "Black" = "Non-Hispanic black, single race",
+                "Asian" = "Non-Hispanic Asian, single race",
+                "Other/Mixed Races" = "Non-Hispanic, other races and multiple races",
+                "Hispanic or Latino" = "Hispanic or Latino"
+    ),
+    selected = "Hispanic or Latino"
+  )  
 )
 
 page_three_main <- mainPanel(
+  plotlyOutput("race_plot"),
+  p("This plot first plot shows the percentage of individuals reporting symptoms
+  in different race/ethnicity groups. The purpose of this was to see if
+  minority groups such as the Asian, Hispanic, Black, and mixed race populations
+  were affected on a higher rate than the majority. The chart shows the
+  reported cases through time as a way to guage the average. There are five
+  groups about whom information can be displayed - people identifying as White,
+  Black, Asian, Hispanic/Latino, or Mixed/Other Races."),
   
+  plotlyOutput("gender_plot"),
+  p("The second plot compares the percentage of individuals who reported having
+    anxiety or depression symptoms over time between individuals who identify
+    as male vs. female. This was created in order to see if the female
+    population, who, in minority populations, are often the smallest minority,
+    are more likely to report symptoms."),
 )
 
 page_three <- tabPanel(
-  "Enter Question one here:",
+  "Race and Gender vs. the Number of Reported Cases",
+  
+  titlePanel("Do Minority Groups Experience Symptoms of Depression and Anxiety at a Higher Rate?"),
+  
+  p("From the two plots, it is clear that under-represented minorities
+    reported symptoms on a higher percentage than did others. From the first
+    plot, it is clear that the smallest group - Mixed/Other Races - reported
+    the highest percentage on average. Similarly, women - who are
+    under-represented in the economy and other spheres also reported symptoms
+    more on average."),
   sidebarLayout(
     page_three_main,
     page_three_widget
