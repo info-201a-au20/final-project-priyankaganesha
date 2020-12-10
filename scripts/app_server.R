@@ -60,7 +60,7 @@ server <- function(input, output){
                       fill = 	input$symptom_select),
         position = position_dodge(),
         width = .5, show.legend = FALSE
-      ) +
+      ) + theme(legend.position = "none") +
       coord_flip() +
       labs(
         title = "Percent of People Depressed or Anxious per Time Period",
