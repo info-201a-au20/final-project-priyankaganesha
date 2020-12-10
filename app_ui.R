@@ -24,7 +24,7 @@ project_overview <- tabPanel(
     Symptoms of Depression and Anxiety at a Higher Rate?"),
   a("https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-Based-on-Repor/8pt5-q6wp"),
   
-  img(src = "img/Nicole_Hwang_Coronavirus_DRS-01.png")
+  img(src = "Nicole_Hwang_Coronavirus_DRS-01.png", height = "50%", width = "50%")
   
 )
 # Here is page two
@@ -188,9 +188,23 @@ p("According to the first graph on page one,  we can see that most cases occured
   This could point towards people feeling anxious and/or depressed despite of 
   the time of year of the survey, but rather due to lockdowns/restrictions 
   that have occured throughout all the time-periods of the covid pandemic."),
+img(src = "summary_1_graph.png", height = "80%", width = "80%"),
 #Second Takeaway
 h4("Second Takeaway: Mental Health Relations With COVID-19 Cases"),
-p(""),
+p("In our second interactive page of the report there we wanted to know if 
+    changes in mental health symptoms, depression or anxiety, had a 
+    relationship with the daily number of new COVID-19 cases for the same time
+    periods. In comparing the two graphs we could observe that they both share
+    a very similar pattern. The graph that matched most closely was Symptoms 
+    of  Depression which as pictured below follows the same peaks and
+    valleys as the COVID-19 cases increases and decreases. From this similar
+    pattern of increasing new daily cases while symptoms of depression
+    increase it could be that the COVID-19 case levels are directly affecting
+    the percent of Americans affected with Depression. This would mean that
+    COVID-19 not only is affecting the physical health of people in the 
+    United States, but also their mental health and wellbeing from 
+    concerns due to the growing number of people sick with COVID-19."),
+img(src = "summary2.png"),
 #Third Takeaway
 h4("Third Takeaway: Minorities and Mental Health"),
 p("According to the first plot, it is clear that out of all of the groups,
@@ -205,7 +219,8 @@ p("According to the first plot, it is clear that out of all of the groups,
   corrolated with the report patterns. I found that individuals indentifying as
   female were more likely to report such sympotoms. The key takeaway from this
   ended up telling me that minorities have been affected the pandemic more than 
-  we might understand, and in more ways that the obvious.")
+  we might understand, and in more ways that the obvious."),
+img(src = "gender_vs_reports.png")
   
 )
 
