@@ -48,8 +48,8 @@ server <- function(input, output){
   #Second Plot: Percent reported by time period and case type
   output$case_type_plot <- renderPlotly({
     df_sort1 <- filter(
-      df_depress, Group == "National Estimate"
-    ) %>%
+      df_depress, Group == "National Estimate",
+      Phase != -1) %>%
       arrange(Indicator)
     
     #Here the plot is created comparing states and the percentages of anxiety or
