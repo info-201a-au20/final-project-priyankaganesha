@@ -54,16 +54,16 @@ server <- function(input, output){
     
     #Here the plot is created comparing states and the percentages of anxiety or
     #depression for the two phases
-    phase_plot <- ggplot(data = df_sort) +
+    phase_plot <- ggplot(data = df_sort1) +
       geom_col(
         mapping = aes(x = Time.Period.Label, y = Value, 
                       fill = 	input$symptom_select),
         position = position_dodge(),
-        width = .5
+        width = .5, show.legend = FALSE
       ) +
       coord_flip() +
       labs(
-        title = "Percent of People Depressed or Anxious per State",
+        title = "Percent of People Depressed or Anxious per Time Period",
         y = "Percent of People Reporting Symptoms of Anxiety or Depression",
         x = "Time Period"
       ) +

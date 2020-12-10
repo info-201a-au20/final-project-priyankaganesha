@@ -25,7 +25,7 @@ project_overview <- tabPanel(
     p("INSERT PICTURE OR SOME SORT OF VISUAL ELEMENT")
   
 )
-
+# Here is page two
 page_one_widget <- sidebarPanel(
   radioButtons(
     inputId = "symptom_select",
@@ -39,8 +39,17 @@ page_one_widget <- sidebarPanel(
 )
 
 page_one_main <- mainPanel(
+  plotlyOutput("case_type_plot"),
+  p("This first plot above was to compare the different reported symptoms of 
+  either, Anxiety Disorder, Depressive Disorder or both. Here you can choose
+    which reported symptom to fill in for each time period. This gives us 
+    an additonal insight as to what time periods had the highest reported 
+    symptoms."),
   plotlyOutput("normalized_plot"),
-  plotlyOutput("case_type_plot")
+  p("This plot takes each time period and averages the reported percentage 
+    of people with symptoms of all and/or both disorders. Then it normalizes 
+    each time period with a z-score to show which time periods had above average
+    reported symptoms.")
 )
 
 page_one <- tabPanel(
