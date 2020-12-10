@@ -137,21 +137,12 @@ server <- function(input, output){
     return(case_plot)
   })
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   #Page Three Plots
-  #First plot: National Percentages of Anxiety or Depression Symptoms Over Time
+  #First plot: Race
   output$race_plot <- renderPlotly({
-    # sort the symptom
+
+    # filter df
     df_race <- df_depress %>% filter(Subgroup == input$race_select,
                         Phase != -1) %>%
       rename(dates = Time.Period.Label) %>%
@@ -160,7 +151,7 @@ server <- function(input, output){
         Value = mean(Value)
       )
     
-    # Symptom names and title
+    # Race
     race_names <- c(
       "White" = "Non-Hispanic white, single race",
       "Black" = "Non-Hispanic black, single race",
@@ -191,9 +182,9 @@ server <- function(input, output){
   })
   
   
-  # Second Plot: Trends of New Daily Covid Cases over time
+  # Gender Plot
   output$gender_plot <- renderPlotly({
-    #added data
+    # Filter DF
     df_gender <- df_depress %>% filter(Group == "By Gender",
                                        Phase != -1) %>%
       rename(dates = Time.Period.Label) %>%
