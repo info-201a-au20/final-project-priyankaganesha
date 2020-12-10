@@ -20,7 +20,8 @@ project_overview <- tabPanel(
     observing how many people are experiencing mental health issues during 
     the pandemic. The questions we want to answer are: QUESTION ONE, 
     Do Changes in Percentage of Mental Health Symptoms Correlate With 
-    Amounts of COVID-19 Cases Over Time?, QUESTION THREE"),
+    Amounts of COVID-19 Cases Over Time?, Do Minority Groups Experience 
+    Symptoms of Depression and Anxiety at a Higher Rate?"),
   a("https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-Based-on-Repor/8pt5-q6wp"),
   
   img(src = "img/Nicole_Hwang_Coronavirus_DRS-01.png")
@@ -191,6 +192,20 @@ p("According to the first graph on page one,  we can see that most cases occured
 h4("Second Takeaway: Mental Health Relations With COVID-19 Cases"),
 p(""),
 #Third Takeaway
+h4("Third Takeaway: Minorities and Mental Health"),
+p("According to the first plot, it is clear that out of all of the groups,
+  minorities generally have higher percentages of reports. Asiasn remained 
+  as the only outlier to this. Not considering this group, individuals
+  indentifying as black, hispanic/latino, mixed/other races all had higher
+  percentages of reports. The highest of that group was individuals of mixed/
+  other races, who are among the smallest minorities in the United States. This
+  suppored the claim that minority race/ethnicities were affected more by
+  symptoms of anxiety and/or depression. We also know that women are the
+  under-represented minority in the workforce. I wanted to see if this
+  corrolated with the report patterns. I found that individuals indentifying as
+  female were more likely to report such sympotoms. The key takeaway from this
+  ended up telling me that minorities have been affected the pandemic more than 
+  we might understand, and in more ways that the obvious.")
   
 )
 
