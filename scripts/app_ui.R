@@ -39,7 +39,9 @@ page_one_widget <- sidebarPanel(
 )
 
 page_one_main <- mainPanel(
+  
   plotlyOutput("case_type_plot"),
+  
   p("This first plot above was to compare the different reported symptoms of 
   either, Anxiety Disorder, Depressive Disorder or both. Here you can choose
     which reported symptom to fill in for each time period. This gives us 
@@ -57,14 +59,12 @@ page_one <- tabPanel(
   
   titlePanel("Which phases of the study were above the 
     average reported percent of cases?"),
-  
-  p("The two plots below are horizontal bar, and "),
-  
-  sidebarLayout(
-    page_one_main,
-    page_one_widget
+page_one_main,
+page_one_widget
   )
-)
+
+
+
 
 #Here is Page Two
 page_two_widget <- sidebarPanel(
