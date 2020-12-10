@@ -1,12 +1,13 @@
 h1 {
   background-color: lightgrey;
   border-left-color: grey;
+  color: black;
 }
 
 h4 {
-  
+  background-color: lightgrey;
 }
 
 a {
-  hover:a;
+  background-color: lightgrey;
 }

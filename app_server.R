@@ -11,7 +11,7 @@ library("rsconnect")
 server <- function(input, output){
   #loading data
   #df_depress1 <- read.csv("C:/Users/Megan/Documents/Junior Year UW/info201/final-project-priyankaganesha/data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
-  df_depress <- read.csv("/Users/stlp/Github/Informatics201/group-project/final-project-priyankaganesha/data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE)
+  df_depress <- read.csv("data/Indicators_of_Anxiety_or_Depression_Based_on_Reported_Frequency_of_Symptoms_During_Last_7_Days.csv", stringsAsFactors = FALSE, fileEncoding = "UTF-8-BOM")
   #Page One Plots
   # First plot: Normalized average cases by reported time period
   
@@ -79,7 +79,8 @@ server <- function(input, output){
     # sort the symptom
     df_nation <- filter(df_depress, Indicator == input$symp_select,
                         Group == "National Estimate",
-                        ?..Phase != -1)
+                        Phase != -1) %>%
+      rename(dates = Time.Period.Label) 
     
     # Symptom names and title
     symp_names <- c(
@@ -94,7 +95,7 @@ server <- function(input, output){
     )
     
     # return the plot
-    national_plot <- ggplot(data = df_nation, aes(x = Time.Period.Label, 
+    national_plot <- ggplot(data = df_nation, aes(x = dates, 
                                              y = Value, group = 1)) +
       geom_line() +
       geom_point() +
@@ -114,13 +115,14 @@ server <- function(input, output){
     #added data
     df_case <- filter(df_depress, Indicator == input$symp_select,
                         Group == "National Estimate",
-                        ?..Phase != -1) %>%
+                        Phase != -1) %>%
+      rename(dates = Time.Period.Label) %>%
       mutate(cases = c(37163, 31099, 26995, 20448, 21361, 20548, 21860, 27957, 
                      40632, 52823, 59273, 72315, 46796, 40178, 42163, 45515, 
                      60238))
     
     # return the plot
-    case_plot <- ggplot(data = df_case, aes(x = Time.Period.Label, y = cases, 
+    case_plot <- ggplot(data = df_case, aes(x = dates, y = cases, 
                                             group = 1)) +
       geom_point()+
       geom_line()+

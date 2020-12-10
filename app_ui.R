@@ -22,7 +22,8 @@ project_overview <- tabPanel(
     Do Changes in Percentage of Mental Health Symptoms Correlate With 
     Amounts of COVID-19 Cases Over Time?, QUESTION THREE"),
   a("https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-Based-on-Repor/8pt5-q6wp"),
-  img(src = "Nicole_Hwang_Coronavirus_DRS-01.png")
+  
+  img(src = "img/Nicole_Hwang_Coronavirus_DRS-01.png")
   
 )
 # Here is page two
@@ -160,11 +161,14 @@ p(""),
   
 )
 
-ui <- navbarPage(
-  "Final Deliverable",
+ui <- fluidPage(
+  includeCSS("styles.css"),
+  navbarPage(
+  "Final Deliverable: Mental Health During the COVID-19 Pandemic",
   project_overview,
   page_one,
   page_two,
   page_three,
   summary_page
+  )
 )
