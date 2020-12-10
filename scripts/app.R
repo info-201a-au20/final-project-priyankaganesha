@@ -5,7 +5,6 @@ library("shiny")
 library("plotly")
 library("ggplot2")
 library("rsconnect")
-library("pegas")
 
 # Use source() to execute the app 'app_ui.R' and app_server.R
 

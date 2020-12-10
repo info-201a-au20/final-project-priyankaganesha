@@ -21,8 +21,8 @@ project_overview <- tabPanel(
     the pandemic. The questions we want to answer are: QUESTION ONE, 
     Do Changes in Percentage of Mental Health Symptoms Correlate With 
     Amounts of COVID-19 Cases Over Time?, QUESTION THREE"),
-    p("INSERT DATASET SOURCE"),
-    p("INSERT PICTURE OR SOME SORT OF VISUAL ELEMENT")
+  a("https://data.cdc.gov/NCHS/Indicators-of-Anxiety-or-Depression-Based-on-Repor/8pt5-q6wp"),
+  img(src = "Nicole_Hwang_Coronavirus_DRS-01.png")
   
 )
 # Here is page two
@@ -47,7 +47,9 @@ page_one_main <- mainPanel(
     which reported symptom to fill in for each time period. This gives us 
     an additonal insight as to what time periods had the highest reported 
     symptoms."),
+
   plotlyOutput("normalized_plot"),
+  
   p("This plot takes each time period and averages the reported percentage 
     of people with symptoms of all and/or both disorders. Then it normalizes 
     each time period with a z-score to show which time periods had above average
